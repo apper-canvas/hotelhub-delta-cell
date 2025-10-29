@@ -295,10 +295,23 @@ const handleBookingComplete = async (bookingData) => {
                         variant="elevated" 
                         className="overflow-hidden hover:shadow-glow transition-all duration-300"
                       >
-                        {room.photos && room.photos.length > 0 && (
+{(room.photo || (room.photos && room.photos.length > 0)) ? (
+                          <div className="h-48 overflow-hidden bg-gradient-to-r from-slate-200 to-slate-100">
+                            <img 
+                              src={room.photo || room.photos[0]} 
+                              alt={`Room ${room.number}`}
+                              className="w-full h-full object-cover"
+                              onError={(e) => {
+                                e.target.style.display = 'none';
+                                e.target.parentElement.innerHTML = '<div class="h-full flex items-center justify-center"><svg class="w-12 h-12 text-slate-400" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></div>';
+                              }}
+                            />
+                          </div>
+                        ) : (
                           <div className="h-48 bg-gradient-to-r from-slate-200 to-slate-100 flex items-center justify-center">
                             <ApperIcon name="Camera" size={48} className="text-slate-400" />
                           </div>
+                        )}
                         )}
                         
                         <div className="p-6">
