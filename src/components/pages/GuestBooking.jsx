@@ -307,11 +307,10 @@ const handleBookingComplete = async (bookingData) => {
                               }}
                             />
                           </div>
-                        ) : (
+) : (
                           <div className="h-48 bg-gradient-to-r from-slate-200 to-slate-100 flex items-center justify-center">
                             <ApperIcon name="Camera" size={48} className="text-slate-400" />
                           </div>
-                        )}
                         )}
                         
                         <div className="p-6">
